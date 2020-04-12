@@ -11,14 +11,14 @@
     <Company>Mobsites</Company>
     <Authors>Allan Mobley</Authors>
     <Copyright>© 2020 Mobsites</Copyright>
-    <Description>Material icon component.</Description>
+    <Description></Description>
     <PackageId>Mobsites.Blazor.[Name of component]</PackageId>
     <IsPackable>true</IsPackable>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>mobsites-logo.png</PackageIcon>
     <PackageReleaseNotes>First preview release.</PackageReleaseNotes>
     <PackageVersion>1.0.0-preview1</PackageVersion>
-    <PackageTags>blazor;component;material;icons</PackageTags>
+    <PackageTags>blazor;component;</PackageTags>
     <PackageProjectUrl>https://mobsites.github.io/Blazor.[Name of component]</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Mobsites/Blazor.[Name of component]</RepositoryUrl>
