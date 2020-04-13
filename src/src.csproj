@@ -19,7 +19,7 @@
     <PackageReleaseNotes>First preview release.</PackageReleaseNotes>
     <PackageVersion>1.0.0-preview1</PackageVersion>
     <PackageTags>blazor;component;</PackageTags>
-    <PackageProjectUrl>https://mobsites.github.io/Blazor.[Name of component]</PackageProjectUrl>
+    <PackageProjectUrl>https://www.mobsites.com</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Mobsites/Blazor.[Name of component]</RepositoryUrl>
   </PropertyGroup>
