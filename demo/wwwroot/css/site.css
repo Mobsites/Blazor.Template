@@ -185,6 +185,9 @@ h2 {
         position: sticky;
         top: 0;
     }
+    .navbar a {
+        display: none;
+    }
     .main .top-row {
         position: sticky;
         top: 0;
