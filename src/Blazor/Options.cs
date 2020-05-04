@@ -28,6 +28,9 @@ namespace Mobsites.Blazor
             *
             ***********************************************************************/
 
+            /// <summary>
+            /// Option for whether javascript representation should be destroyed.
+            /// </summary>
             public bool Destroy { get; set; }
         }
     }

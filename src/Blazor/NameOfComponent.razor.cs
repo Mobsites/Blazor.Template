@@ -32,41 +32,34 @@ namespace Mobsites.Blazor
         ****************************************************/
 
         private DotNetObjectReference<NameOfComponent> self;
+
+        /// <summary>
+        /// Net reference passed into javascript representation.
+        /// </summary>
         protected DotNetObjectReference<NameOfComponent> Self
         {
             get => self ?? (Self = DotNetObjectReference.Create(this));
             set => self = value;
         }
 
+        /// <summary>
+        /// Dom element reference passed into javascript representation.
+        /// </summary>
         protected ElementReference ElemRef { get; set; }
 
+        /// <summary>
+        /// Life cycle method for when component has been rendered in the dom and javascript interopt is fully ready.
+        /// </summary>
         protected async override Task OnAfterRenderAsync(bool firstRender)
         {
-            var options = await this.GetState<NameOfComponent, Options>();
-
             if (firstRender)
             {
-                if (options is null)
-                {
-                    options = this.GetOptions();
-                }
-                else
-                {
-                    await this.CheckState(options);
-                }
-
-                initialized = true;
+                await Initialize();
             }
             else
             {
-                // Use current state if...
-                if (this.initialized || options is null)
-                {
-                    options = this.GetOptions();
-                }
+                await Refresh();
             }
-            
-            await this.Save<NameOfComponent, Options>(options);
         }
 
         private async Task Initialize()
@@ -88,7 +81,8 @@ namespace Mobsites.Blazor
             this.initialized = await this.jsRuntime.InvokeAsync<bool>(
                 "Mobsites.Blazor.NameOfComponent.init",
                 Self,
-                new {
+                new
+                {
                     this.ElemRef
                 },
                 options);
@@ -109,7 +103,8 @@ namespace Mobsites.Blazor
             this.initialized = await this.jsRuntime.InvokeAsync<bool>(
                 "Mobsites.Blazor.NameOfComponent.refresh",
                 Self,
-                new {
+                new
+                {
                     this.ElemRef
                 },
                 options);
@@ -117,11 +112,15 @@ namespace Mobsites.Blazor
             await this.Save<NameOfComponent, Options>(options);
         }
 
+        /// <summary>
+        /// Get current or storage-saved options for keeping state.
+        /// </summary>
+
         protected Options GetOptions()
         {
-            var options = new Options 
+            var options = new Options
             {
-                
+
             };
 
             base.SetOptions(options);
@@ -129,15 +128,22 @@ namespace Mobsites.Blazor
             return options;
         }
 
+        /// <summary>
+        /// Check whether storage-retrieved options are different than current
+        /// and thereby need to notify parents of change when keeping state.
+        /// </summary>
         protected async Task CheckState(Options options)
         {
             bool stateChanged = false;
-            
+
 
             if (await base.CheckState(options) || stateChanged)
                 StateHasChanged();
         }
 
+        /// <summary>
+        /// Called by GC.
+        /// </summary>
         public override void Dispose()
         {
             self?.Dispose();

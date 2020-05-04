@@ -23,9 +23,7 @@ Check out its source code [here](./samples).
 
 ###### .NETStandard 2.0
 
-* Microsoft.AspNetCore.Components (>= 3.1.3)
-* Microsoft.AspNetCore.Components.Web (>= 3.1.3)
-* Mobsites.Blazor.BaseComponents (>= 1.0.1)
+* Mobsites.Blazor.BaseComponents (>= 1.0.2)
 
 ## Design and Development
 
