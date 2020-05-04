@@ -31,4 +31,10 @@ The design and development of this Blazor component was heavily guided by Micros
 
 ## Getting Started
 
-Check out our new [docs](https://www.mobsites.com/blazor/name-of-component) to help you get started.
+1. Add [Nuget](https://www.nuget.org/packages/Mobsites.Blazor.NameOfComponent/) package:
+
+```shell
+dotnet add package Mobsites.Blazor.NameOfComponent
+```
+
+Next check out our new [docs](https://www.mobsites.com/blazor/name-of-component) to help you get started.
