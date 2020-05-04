@@ -8,7 +8,7 @@ namespace Mobsites.Blazor
         /// <summary>
         /// Abstract base representing options that can be saved in browser storage.
         /// </summary>
-        protected class Options : StatefulComponentOptions
+        internal class Options : StatefulComponentOptions
         {
             /************************************************************************
             *

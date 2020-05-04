@@ -10,13 +10,19 @@ namespace Mobsites.Blazor
     /// <summary>
     /// UI component for rendering an icon.
     /// </summary>
-    public partial class NameOfComponent
+    public sealed partial class NameOfComponent
     {
         /****************************************************
         *
         *  PUBLIC INTERFACE
         *
         ****************************************************/
+
+        /// <summary>
+        /// Content to render.
+        /// </summary>
+        [Parameter] public RenderFragment ChildContent { get; set; }
+
 
         /// <summary>
         /// Clear all state for this UI component and any of its dependents from browser storage.
@@ -36,7 +42,7 @@ namespace Mobsites.Blazor
         /// <summary>
         /// Net reference passed into javascript representation.
         /// </summary>
-        protected DotNetObjectReference<NameOfComponent> Self
+        internal DotNetObjectReference<NameOfComponent> Self
         {
             get => self ?? (Self = DotNetObjectReference.Create(this));
             set => self = value;
@@ -45,7 +51,7 @@ namespace Mobsites.Blazor
         /// <summary>
         /// Dom element reference passed into javascript representation.
         /// </summary>
-        protected ElementReference ElemRef { get; set; }
+        internal ElementReference ElemRef { get; set; }
 
         /// <summary>
         /// Life cycle method for when component has been rendered in the dom and javascript interopt is fully ready.
@@ -62,6 +68,9 @@ namespace Mobsites.Blazor
             }
         }
 
+        /// <summary>
+        /// Initialize state and javascript representations.
+        /// </summary>
         private async Task Initialize()
         {
             var options = await this.GetState<NameOfComponent, Options>();
@@ -89,7 +98,10 @@ namespace Mobsites.Blazor
 
             await this.Save<NameOfComponent, Options>(options);
         }
-
+        
+        /// <summary>
+        /// Refresh state and javascript representations.
+        /// </summary>
         private async Task Refresh()
         {
             var options = await this.GetState<NameOfComponent, Options>();
@@ -115,8 +127,7 @@ namespace Mobsites.Blazor
         /// <summary>
         /// Get current or storage-saved options for keeping state.
         /// </summary>
-
-        protected Options GetOptions()
+        internal Options GetOptions()
         {
             var options = new Options
             {
@@ -132,7 +143,7 @@ namespace Mobsites.Blazor
         /// Check whether storage-retrieved options are different than current
         /// and thereby need to notify parents of change when keeping state.
         /// </summary>
-        protected async Task CheckState(Options options)
+        internal async Task CheckState(Options options)
         {
             bool stateChanged = false;
 
