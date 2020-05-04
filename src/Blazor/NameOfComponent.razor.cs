@@ -1,6 +1,7 @@
 // Copyright (c) 2020 Allan Mobley. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -36,6 +37,11 @@ namespace Mobsites.Blazor
         *  NON-PUBLIC INTERFACE
         *
         ****************************************************/
+
+        /// <summary>
+        /// Whether component environment is Blazor WASM or Server.
+        /// </summary>
+        internal bool IsWASM => RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY"));
 
         private DotNetObjectReference<NameOfComponent> self;
 
