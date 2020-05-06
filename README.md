@@ -6,7 +6,7 @@ by <a href="https://www.mobsites.com"><img align="center" src="./src/assets/mobs
 
 [Brief description]
 
-## [Demo](https://www.mobsites.com/Blazor.NameOfComponent/)
+## [Demo](https://nameofcomponent.mobsites.com)
 
 Tap the link above to go to a live demo. Try some of the options to get an idea of what's possible. Then reload the app in the browser and watch how the state was kept!
 
