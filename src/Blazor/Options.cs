@@ -27,11 +27,8 @@ namespace Mobsites.Blazor
             *   be accounted for there as not defined.
             *
             ***********************************************************************/
-
-            /// <summary>
-            /// Option for whether javascript representation should be destroyed.
-            /// </summary>
-            public bool Destroy { get; set; }
+            
+            
         }
     }
 }

@@ -1,3 +1,13 @@
 @inherits StatefulComponent
 
-<h1>Hello, World!</h1>
+@{
+    string id = string.IsNullOrWhiteSpace(Id)
+        ? "blazor-name-of-component"
+        : Id;
+}
+
+<div @ref="ElemRef" id="@id" class="@Class" style="@Style" @attributes="@ExtraAttributes">
+    <CascadingValue Value="this">
+      @ChildContent
+    </CascadingValue>
+</div>

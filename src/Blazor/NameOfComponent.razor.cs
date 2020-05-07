@@ -24,6 +24,17 @@ namespace Mobsites.Blazor
         /// </summary>
         [Parameter] public RenderFragment ChildContent { get; set; }
 
+        /// <summary>
+        /// Content to render.
+        /// </summary>
+        [JSInvokable]
+        public void SetIndex(int index)
+        {
+            if (Index < 0)
+            {
+                Index = index;
+            }
+        }
 
         /// <summary>
         /// Clear all state for this UI component and any of its dependents from browser storage.
@@ -55,6 +66,11 @@ namespace Mobsites.Blazor
         }
 
         /// <summary>
+        /// The index to this object's javascript representation in the object store.
+        /// </summary>
+        internal int Index { get; set; } = -1;
+
+        /// <summary>
         /// Dom element reference passed into javascript representation.
         /// </summary>
         internal ElementReference ElemRef { get; set; }
@@ -70,7 +86,7 @@ namespace Mobsites.Blazor
             }
             else
             {
-                await Refresh();
+                await Update();
             }
         }
 
@@ -90,11 +106,8 @@ namespace Mobsites.Blazor
                 await this.CheckState(options);
             }
 
-            // Destroy any lingering js representation.
-            options.Destroy = true;
-
             this.initialized = await this.jsRuntime.InvokeAsync<bool>(
-                "Mobsites.Blazor.NameOfComponent.init",
+                "Mobsites.Blazor.NameOfComponents.init",
                 Self,
                 new
                 {
@@ -106,9 +119,9 @@ namespace Mobsites.Blazor
         }
         
         /// <summary>
-        /// Refresh state and javascript representations.
+        /// Update state.
         /// </summary>
-        private async Task Refresh()
+        private async Task Update()
         {
             var options = await this.GetState<NameOfComponent, Options>();
 
@@ -119,12 +132,8 @@ namespace Mobsites.Blazor
             }
 
             this.initialized = await this.jsRuntime.InvokeAsync<bool>(
-                "Mobsites.Blazor.NameOfComponent.refresh",
-                Self,
-                new
-                {
-                    this.ElemRef
-                },
+                "Mobsites.Blazor.NameOfComponents.update",
+                Index,
                 options);
 
             await this.Save<NameOfComponent, Options>(options);
@@ -163,6 +172,7 @@ namespace Mobsites.Blazor
         /// </summary>
         public override void Dispose()
         {
+            jsRuntime.InvokeVoidAsync("Mobsites.Blazor.NameOfComponents.destroy", Index);
             self?.Dispose();
             base.Dispose();
         }
