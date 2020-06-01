@@ -1,8 +1,8 @@
-[![Build Status](https://dev.azure.com/Mobsites-US/Blazor%20Template/_apis/build/status/Build?branchName=master)](https://dev.azure.com/Mobsites-US/Blazor%20Template/_build/latest?definitionId=22&branchName=master)
-
 # Blazor NameOfComponent
 
 by <a href="https://www.mobsites.com"><img align="center" src="./src/assets/mobsites-logo.png" width="36" height="36" style="padding-top: 20px;" />obsites</a>
+
+![Nuget](https://img.shields.io/nuget/v/Mobsites.Blazor.NameOfComponent) ![Nuget](https://img.shields.io/nuget/dt/Mobsites.Blazor.NameOfComponent) [![Build Status](https://dev.azure.com/Mobsites-US/Blazor%20Template/_apis/build/status/Build?branchName=master)](https://dev.azure.com/Mobsites-US/Blazor%20Template/_build/latest?definitionId=22&branchName=master)
 
 [Brief description]
 
