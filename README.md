@@ -23,7 +23,7 @@ Check out its source code [here](./samples).
 
 ###### .NETStandard 2.0
 
-* Mobsites.Blazor.BaseComponents (>= 1.0.2)
+* Mobsites.Blazor.BaseComponents (>= 1.0.3)
 
 ## Design and Development
 
